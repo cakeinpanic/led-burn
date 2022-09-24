@@ -1,4 +1,5 @@
-<button>Click</button>
+<!--<button>Click</button>-->
+<button id="android">Send event to Android</button>
 
 <script>
   function init () {
@@ -26,5 +27,14 @@
       console.log(`Battery percentage is ${value.getUint8(0)}`);
     }).catch(error => { console.error(error); });
   }
-  document.querySelector('button').addEventListener('click', init)
+  //document.querySelector('button').addEventListener('click', init)
+  function sendToAndroid(){
+    console.log(window.Android);
+    if(window.Android){
+        window.Android.sendMeEvent('katya says hello');
+      } else {
+        alert('Android is not defined')
+      }
+  }
+  document.getElementById('android').addEventListener('click', sendToAndroid)
 </script>
