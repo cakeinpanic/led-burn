@@ -1,6 +1,9 @@
 // medium article with full example
 // https://medium.com/@skywall/inject-js-into-androids-webview-8845fb5902b7
 
+// how to load local file on android
+// https://stackoverflow.com/a/51822901/4166537
+
 // copied from docs https://developer.android.com/develop/ui/views/layout/webapps/webview#java
 
 // Sending data to JS
