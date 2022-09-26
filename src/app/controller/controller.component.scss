@@ -1,0 +1,24 @@
+:host {
+  background: #1F1E25;
+  border-radius: 20px;
+  padding: 43px;
+  width: 100%;
+  display: block;
+}
+
+.name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+
+.buttons {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+}

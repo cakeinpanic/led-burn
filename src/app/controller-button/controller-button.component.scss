@@ -1,0 +1,27 @@
+:host {
+  width: 162px;
+  height: 82px;
+  padding: 10px;
+ 
+  border-radius: 20px;
+  background: #424246;
+  border: 1px solid #E096CB;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  &.on {
+    background: #25242D;
+    border: 1px solid #E096CB;
+    
+  }
+  
+}
+
+.color-circle {
+  display: inline-block;
+  width: 62px;
+  height: 62px;
+  margin-right: 16px;
+  border-radius: 70px;
+}

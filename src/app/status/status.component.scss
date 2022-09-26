@@ -1,0 +1,32 @@
+
+.status {
+  
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  display: inline-block;
+  &.on {
+    background: #23FF61;
+  }
+  &.off {
+    background: #FF0000;
+  }
+}
+
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+.status-text {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  
+  color: #8C8C8C;
+  margin-left: 16px;
+}
+
