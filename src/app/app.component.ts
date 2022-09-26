@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	onStage = false;
+	onStage = true;
 
 	goToStage(isStage: boolean) {
 		this.onStage = isStage;

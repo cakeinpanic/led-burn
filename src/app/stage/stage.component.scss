@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.block {
+  width: 100%;
+  margin: 36px 0;
+  background: #25242D;
+  border: 1px solid #E096CB;
+  border-radius: 20px;
+  
+  /* Inside auto layout */
+  display: block;
+  padding: 55px;
+  
+  .title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 60px;
+  }
+}

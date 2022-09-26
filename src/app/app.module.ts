@@ -8,6 +8,8 @@ import { StageComponent } from './stage/stage.component';
 import { FlamingoComponent } from './flamingo/flamingo.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { StatusComponent } from './status/status.component';
+import { MusicComponent } from './stage/music/music.component';
+import { StageButtonComponent } from './stage/stage-button/stage-button.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { StatusComponent } from './status/status.component';
     StageComponent,
     FlamingoComponent,
     TabsComponent,
-    StatusComponent
+    StatusComponent,
+    MusicComponent,
+    StageButtonComponent
   ],
   imports: [
     BrowserModule
