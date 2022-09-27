@@ -1,5 +1,18 @@
 @import "vars.scss";
 
+:host {
+  width: 100%;
+  display: block;
+}
+
+.android {
+  color: red;
+  text-align: center;
+  font-size: 25px;
+  padding: 20px;
+  width: 100%;
+}
+
 .nav {
   display: flex;
   flex-direction: row;
@@ -19,6 +32,7 @@
     height: 96px;
     color: $fontColor;
     justify-content: center;
+    
     &.selected {
       background: $grey;
     }

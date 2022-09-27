@@ -1,3 +1,4 @@
+<div class="android" *ngIf="noAndroid">Did not connect to java app</div>
 <div class="nav">
   <div class="tab" [class.selected]="onStage" (click)="goToStage(true)"><span>Stage</span></div>
   <div class="tab" [class.selected]="!onStage" (click)="goToStage(false)"><span>Flamingo</span></div>

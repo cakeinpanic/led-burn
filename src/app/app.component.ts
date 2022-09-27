@@ -8,9 +8,13 @@ import { JavaService } from './java.service';
 })
 export class AppComponent {
 	onStage = true;
-
+noAndroid = false
 	constructor(private java: JavaService) {
-		java.sendToAndroid('Hello')
+		try {
+			java.sendToAndroid('Hello')
+		} catch (e){
+			this.noAndroid= true
+		}
 
 	}
 
