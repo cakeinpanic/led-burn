@@ -8,12 +8,18 @@ import { JavaService } from './java.service';
 })
 export class AppComponent {
 	onStage = true;
-noAndroid = false
+	noAndroid = false;
+
 	constructor(private java: JavaService) {
 		try {
-			java.sendToAndroid('Hello')
-		} catch (e){
-			this.noAndroid= true
+			java.sendToAndroid('Hello, Itai');
+			this.java.androidMessage.subscribe(t => {
+				console.log('kva');
+				//java.sendToAndroid();
+				//this.message = t;
+			});
+		} catch (e) {
+			this.noAndroid = true;
 		}
 
 	}
