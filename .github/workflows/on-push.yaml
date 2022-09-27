@@ -26,17 +26,12 @@ jobs:
           restore-keys: |
             cache-
 
-      - run: git push -d origin pages
-        continue-on-error: true
-
-      - run: git checkout -b pages
+      - run: |
+          git config --global user.email "cakeinpanic@gmail.com"
+          git config --global user.name "Katya Bot"
 
       - name: 'install'
         run: npm i
-
-      - run: |
-            git config --global user.email "cakeinpanic@gmail.com"
-            git config --global user.name "Katya Bot"
 
       - name: 'build'
         run: npm run build && git add . && git commit -am "build"
