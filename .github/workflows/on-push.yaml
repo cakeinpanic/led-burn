@@ -7,7 +7,7 @@ on:
       - '!**'
 
 jobs:
-  cypress-test-on-docker:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
