@@ -26,7 +26,7 @@ jobs:
           restore-keys: |
             cache-
 
-      - run: git branch -d pages
+      - run: git push -d origin pages
         continue-on-error: true
 
       - run: git checkout -b pages
@@ -37,6 +37,6 @@ jobs:
       - name: 'build'
         run: npm run build
 
-      - run: git push --set-upstream origin pages
+      - run: git push --set-upstream origin pages --force
 
 
