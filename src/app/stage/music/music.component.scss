@@ -1,20 +1,20 @@
 :host {
   width: 100%;
-  height: 446px;
+  height: 20rem;
   
   background: #25242D;
   border: 1px solid #E096CB;
-  border-radius: 20px;
+  border-radius: 1rem;
   
   /* Inside auto layout */
   display: block;
-  padding: 40px;
+  padding: 2rem;
 }
 .title {
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1rem;
+  line-height: 1.3rem;
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -28,7 +28,8 @@
   width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .button {
@@ -36,10 +37,10 @@
   border: 2px solid #E096CB;
   border-radius: 175px;
   display: flex;
-  width: 150px;
-  height: 150px;
+  width: 5rem;
+  height: 5rem;
   &.play {
-    width: 200px;
-    height: 200px;
+    width: 8rem;
+    height: 8rem;
   }
 }

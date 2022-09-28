@@ -11,20 +11,20 @@
 
 .block {
   width: 100%;
-  margin: 36px 0;
+  margin: 1rem 0;
   background: #25242D;
   border: 1px solid #E096CB;
-  border-radius: 20px;
+  border-radius: 1rem;
   
   /* Inside auto layout */
   display: block;
-  padding: 55px;
+  padding: 2rem;
   
   .title {
     font-style: normal;
     font-weight: 700;
-    font-size: 36px;
-    line-height: 44px;
-    margin-bottom: 60px;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 2.5rem;
   }
 }

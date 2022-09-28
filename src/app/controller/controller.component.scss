@@ -1,7 +1,7 @@
 :host {
   background: #1F1E25;
-  border-radius: 20px;
-  padding: 43px;
+  border-radius: .6rem;
+  padding: 2rem;
   width: 100%;
   display: block;
 }
@@ -9,16 +9,17 @@
 .name {
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
-  line-height: 44px;
+  font-size: 1.5rem;
+  line-height: 2rem;
   color: #fff;
-  margin-bottom: 16px;
+  margin-bottom: .4rem;
 }
 
 
 .buttons {
   display: flex;
-  margin-top: 20px;
+  margin-top: .9rem;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
 }

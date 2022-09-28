@@ -3,9 +3,17 @@
 * {
   box-sizing: border-box;
 }
+
+html {
+  font-size: 14px;
+}
+
 body {
   background: $bg;
+  max-width: 1200px;
+  margin: 0 auto;
   font-family: 'Montserrat', sans-serif;
-  padding: 87px;
+  padding: 3rem;
   color: #fff;
+  
 }

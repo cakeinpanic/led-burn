@@ -1,22 +1,22 @@
 @import "vars.scss";
 
 :host {
-  width: 100%;
-  display: block;
+  width: 1200px;
+  height: 1920px;
 }
 
 .android {
   color: red;
   text-align: center;
-  font-size: 25px;
-  padding: 20px;
+  font-size: 1rem;
+  padding: 0.9rem;
   width: 100%;
 }
 
 .nav {
   display: flex;
   flex-direction: row;
-  margin-bottom: 70px;
+  margin-bottom: 3rem;
   
   .tab {
     border-radius: 20px;
@@ -25,11 +25,11 @@
     text-align: center;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1rem;
+    line-height: 1.1rem;
     display: flex;
     align-items: center;
-    height: 96px;
+    height: 4rem;
     color: $fontColor;
     justify-content: center;
     

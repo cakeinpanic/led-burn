@@ -1,9 +1,10 @@
 :host {
-  width: 162px;
-  height: 82px;
-  padding: 10px;
+  width: 6.75rem;
+  height: 3.4rem;
+  padding: .5rem;
+  margin: .3rem;
  
-  border-radius: 20px;
+  border-radius: .9rem;
   background: #424246;
   border: 1px solid #E096CB;
   display: flex;
@@ -20,8 +21,8 @@
 
 .color-circle {
   display: inline-block;
-  width: 62px;
-  height: 62px;
-  margin-right: 16px;
-  border-radius: 70px;
+  width: 2rem;
+  height: 2rem;
+  margin-right: .7rem;
+  border-radius: 3rem;
 }
