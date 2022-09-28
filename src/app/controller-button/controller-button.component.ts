@@ -1,4 +1,5 @@
-import { Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { COLORS } from '../enums';
 import { FlamingoService, FlamingQuery } from '../flamingo-store.service';
 
@@ -13,14 +14,17 @@ const COLOR_CODES: { [key: string]: string } = {
 @Component({
 	selector: 'app-controller-button',
 	templateUrl: './controller-button.component.html',
-	styleUrls: ['./controller-button.component.scss']
+	styleUrls: ['./controller-button.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ControllerButtonComponent implements OnInit {
 	@Input() color: COLORS;
 	@Input() controllerIndex: string;
 
-	constructor(private flamingoService: FlamingoService,
-				private flamingQuery: FlamingQuery) { }
+	constructor(
+		private flamingoService: FlamingoService,
+		private flamingQuery: FlamingQuery,
+		private cd: ChangeDetectorRef) { }
 
 	get colorCode(): string {
 		return COLOR_CODES[this.color];
@@ -28,15 +32,18 @@ export class ControllerButtonComponent implements OnInit {
 
 	@HostListener('click')
 	onClick() {
-		this.flamingoService.setColor(this.controllerIndex, this.color, !this.isColorOn);
+		this.flamingoService.setColor(this.controllerIndex, this.color);
 	}
 
 	@HostBinding('class.on')
-	get isColorOn(): boolean {
-		return this.flamingQuery.isColorOn(this.controllerIndex, this.color);
+	get isColorOn$(): Observable<boolean> {
+		return this.flamingQuery.isColorOn$(this.controllerIndex, this.color);
 	}
 
 	ngOnInit(): void {
+		this.isColorOn$.subscribe(() => {
+			this.cd.detectChanges();
+		});
 	}
 
 }

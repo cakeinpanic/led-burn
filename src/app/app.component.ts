@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FlamingoService } from './flamingo-store.service';
 import { JavaService } from './java.service';
 
 @Component({
@@ -10,17 +11,22 @@ export class AppComponent {
 	onStage = false;
 	noAndroid = false;
 
-	constructor(private java: JavaService) {
-		try {
-			java.sendToAndroid('Hello, Itai');
-			this.java.androidMessage.subscribe(t => {
-				console.log('kva');
-				//java.sendToAndroid();
-				//this.message = t;
-			});
-		} catch (e) {
-			this.noAndroid = true;
-		}
+	constructor(private java: JavaService, private flamingoService: FlamingoService) {
+
+	}
+
+	ngOnInit() {
+		this.noAndroid = !this.java.checkAndroid();
+
+		this.java.androidMessage.subscribe(t => {
+			const [signalType, signalBody] = t.split('=');
+			console.log(signalType);
+			switch (signalType) {
+				case 'P':
+					this.flamingoService.setColorFromSignal(signalBody);
+					break;
+			}
+		});
 
 	}
 

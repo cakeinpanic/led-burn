@@ -5,23 +5,28 @@ import { Subject } from 'rxjs';
 	providedIn: 'root'
 })
 export class JavaService {
-	androidMessage = new Subject()
+	androidMessage = new Subject<string>();
+	Android: any;
+
 	constructor() {
 		(window as any)['getFromAndroid'] = this.getFromAndroid.bind(this);
 	}
 
+	checkAndroid():boolean {
+		this.Android = (window as any)['Android'];
+		return !!this.Android;
+	}
+
 	sendToAndroid(message: string) {
-		const Android = (window as any)['Android'];
-		if (Android) {
-			Android.sendMeEvent(message);
-		} else {
-			throw new Error()
+		console.log('sent to android: ', message);
+		if (this.Android) {
+			this.Android.sendMeEvent(message);
 		}
 	}
 
 	getFromAndroid(s: string) {
-		this.androidMessage.next(s)
-		this.sendToAndroid('Got from android' + s)
-		alert(`Got from Android: ${s}`);
+		this.androidMessage.next(s);
+		this.sendToAndroid('Got from android' + s);
+		//alert(`Got from Android: ${s}`);
 	}
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Query, Store, StoreConfig } from '@datorama/akita';
-import { Observable } from 'rxjs';
-import { COLORS } from './enums';
+import { map, Observable } from 'rxjs';
+import { COLORS, ORDERED_COLORS } from './enums';
+import { JavaService } from './java.service';
 
 export interface ControllerColors {
 	[COLORS.RED]: number | boolean;
@@ -51,11 +52,11 @@ export class FlamingQuery extends Query<FlamingoState> {
 	controller3$ = this.select('controller3');
 
 	controller$(controllerIndex: number | string): Observable<Controller> {
-		return (this as any)['controller' + controllerIndex + '$'] as Observable<Controller>
+		return (this as any)['controller' + controllerIndex + '$'] as Observable<Controller>;
 	}
 
-	isColorOn(controllerIndex: number | string, color: COLORS): boolean {
-		return !!((this.getValue() as any)['controller' + controllerIndex] as Controller).colors[color];
+	isColorOn$(controllerIndex: number | string, color: COLORS): Observable<boolean> {
+		return this.controller$(controllerIndex).pipe(map(c => !!c.colors[color]));
 	}
 }
 
@@ -70,19 +71,39 @@ export class FlamingoStore extends Store<FlamingoState> {
 
 @Injectable({ providedIn: 'root' })
 export class FlamingoService {
-	constructor(private store: FlamingoStore) {
+	constructor(private store: FlamingoStore, private javaService: JavaService) {
 
 	}
 
-	setColor(controllerIndex: number | string, color: COLORS, newColorState: boolean) {
+	setColor(controllerIndex: number | string, color: COLORS) {
+		const keyName = 'controller' + controllerIndex;
+		const controllerState = (this.store.getValue() as any)[keyName] as Controller;
+
+		this.javaService.sendToAndroid(
+			`P=${[
+				controllerIndex,
+				...ORDERED_COLORS.map(c => {
+					const colorTooConvert = c === color ? !controllerState.colors[c] : controllerState.colors[c];
+					return colorTooConvert ? 1 : 0;
+				})
+			].join('')}`);
+
+	}
+
+	setColorFromSignal(signal: string) {
+		const controllerIndex = signal[0];
+		const keyName = 'controller' + controllerIndex;
+		const colors = {} as ControllerColors;
+		ORDERED_COLORS.forEach((color, index) => {
+			colors[color] = signal[index + 1] === '1';
+		});
+
 		this.store.update(state => {
-			const keyName = 'controller' + controllerIndex;
-			const controllerState = (state as any)[keyName] as Controller;
+			const controllerState = (this.store.getValue() as any)[keyName] as Controller;
 			const newState = {
 				...state,
-				[keyName]: { ...controllerState, colors: { ...controllerState.colors, [color]: newColorState } } as Controller
+				[keyName]: { ...controllerState, colors } as Controller
 			};
-			console.log(newState);
 			return newState;
 		});
 	}
