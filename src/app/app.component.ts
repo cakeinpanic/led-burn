@@ -7,7 +7,7 @@ import { JavaService } from './java.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	onStage = true;
+	onStage = false;
 	noAndroid = false;
 
 	constructor(private java: JavaService) {

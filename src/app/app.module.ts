@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ControllerComponent } from './controller/controller.component';
 import { ControllerButtonComponent } from './controller-button/controller-button.component';
-import { FlamingoStoreService } from './flamingo-store.service';
+import { FlamingoStore } from './flamingo-store.service';
 import { StageStoreService } from './stage-store.service';
 import { StageComponent } from './stage/stage.component';
 import { FlamingoComponent } from './flamingo/flamingo.component';
@@ -28,7 +28,7 @@ import { StageButtonComponent } from './stage/stage-button/stage-button.componen
   imports: [
     BrowserModule
   ],
-  providers: [FlamingoStoreService, StageStoreService],
+  providers: [FlamingoStore, StageStoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

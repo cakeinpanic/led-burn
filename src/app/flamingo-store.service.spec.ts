@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FlamingoStoreService } from './flamingo-store.service';
+import { FlamingoStore } from './flamingo-store.service';
 
 describe('FlamingoStoreService', () => {
-  let service: FlamingoStoreService;
+  let service: FlamingoStore;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FlamingoStoreService);
+    service = TestBed.inject(FlamingoStore);
   });
 
   it('should be created', () => {

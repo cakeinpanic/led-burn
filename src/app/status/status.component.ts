@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./status.component.scss']
 })
 export class StatusComponent implements OnInit {
-	@Input() isOn = false;
+	@Input() isOn: boolean | null = false;
 
 	constructor() { }
 

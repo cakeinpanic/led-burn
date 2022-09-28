@@ -1,12 +1,13 @@
 import { Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
+import { COLORS } from '../enums';
+import { FlamingoService, FlamingQuery } from '../flamingo-store.service';
 
-const COLORS: { [key: string]: string } = {
-	red: '#FF4949',
-	blue: '#1E89EB',
-	yellow: '#F4EB12',
-	white: '#FFFFFF',
-	green: '#00FF0A'
-
+const COLOR_CODES: { [key: string]: string } = {
+	[COLORS.RED]: '#FF4949',
+	[COLORS.BLUE]: '#1E89EB',
+	[COLORS.YELLOW]: '#F4EB12',
+	[COLORS.WHITE]: '#FFFFFF',
+	[COLORS.GREEN]: '#00FF0A'
 };
 
 @Component({
@@ -15,18 +16,24 @@ const COLORS: { [key: string]: string } = {
 	styleUrls: ['./controller-button.component.scss']
 })
 export class ControllerButtonComponent implements OnInit {
-	@HostBinding('class.on') isOn = false;
-	@Input() color = 'red';
+	@Input() color: COLORS;
+	@Input() controllerIndex: string;
 
-	constructor() { }
+	constructor(private flamingoService: FlamingoService,
+				private flamingQuery: FlamingQuery) { }
 
 	get colorCode(): string {
-		return COLORS[this.color];
+		return COLOR_CODES[this.color];
 	}
 
 	@HostListener('click')
 	onClick() {
-		this.isOn = !this.isOn;
+		this.flamingoService.setColor(this.controllerIndex, this.color, !this.isColorOn);
+	}
+
+	@HostBinding('class.on')
+	get isColorOn(): boolean {
+		return this.flamingQuery.isColorOn(this.controllerIndex, this.color);
 	}
 
 	ngOnInit(): void {

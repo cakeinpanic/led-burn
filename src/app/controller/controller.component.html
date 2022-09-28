@@ -1,10 +1,9 @@
 <div class="name">{{name}}</div>
-<app-status [isOn]="isOn"></app-status>
+<app-status [isOn]="isOn$ | async"></app-status>
 <div class="buttons">
-<app-controller-button color="green"></app-controller-button>
-<app-controller-button color="yellow"></app-controller-button>
-<app-controller-button color="blue"></app-controller-button>
-<app-controller-button color="red"></app-controller-button>
-<app-controller-button color="white"></app-controller-button>
-
+  <app-controller-button [color]="COLORS.GREEN" [controllerIndex]="controllerIndex"></app-controller-button>
+  <app-controller-button [color]="COLORS.YELLOW" [controllerIndex]="controllerIndex"></app-controller-button>
+  <app-controller-button [color]="COLORS.BLUE" [controllerIndex]="controllerIndex"></app-controller-button>
+  <app-controller-button [color]="COLORS.RED" [controllerIndex]="controllerIndex"></app-controller-button>
+  <app-controller-button [color]="COLORS.WHITE" [controllerIndex]="controllerIndex"></app-controller-button>
 </div>
