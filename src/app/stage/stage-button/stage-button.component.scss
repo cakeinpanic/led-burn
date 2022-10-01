@@ -12,6 +12,21 @@
   border: 1px solid #E096CB;
   border-radius: 4rem;
   margin-bottom: .6rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  &:after{
+    display: block;
+    content: '';
+    width: 60%;
+    height: 60%;
+  
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: white;
+    mask-image: url(../../../assets/flare.svg);
+    
+  }
 }
 
 .title {
@@ -25,3 +40,4 @@
   
   color: #DEDEDE;
 }
+

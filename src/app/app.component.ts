@@ -8,7 +8,7 @@ import { JavaService } from './java.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	onStage = false;
+	onStage = true;
 	noAndroid = false;
 
 	constructor(private java: JavaService, private flamingoService: FlamingoService) {

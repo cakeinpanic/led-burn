@@ -10,6 +10,7 @@
   display: block;
   padding: 2rem;
 }
+
 .title {
   font-style: normal;
   font-weight: 600;
@@ -21,6 +22,7 @@
   
   color: #E096CB;
 }
+
 .buttons {
   display: flex;
   order: 1;
@@ -39,8 +41,56 @@
   display: flex;
   width: 5rem;
   height: 5rem;
+  align-items: center;
+  justify-content: center;
+  
+  &:after {
+    display: block;
+    content: '';
+    width: 60%;
+    height: 60%;
+    
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: white;
+  }
+  
+  &:hover, &:active {
+    background: #E096CB;
+    
+    &:after {
+      background-color: black;
+    }
+  }
+  
   &.play {
     width: 8rem;
     height: 8rem;
+    
+    &:after {
+      position: relative;
+      left: 5%;
+      mask-image: url(../../../assets/play.svg);
+      width: 40%;
+      height: 40%;
+    }
+  }
+  
+  &.stop {
+    &:after {
+      mask-image: url(../../../assets/stop.svg);
+    }
+  }
+  
+  &.next {
+    &:after {
+      mask-image: url(../../../assets/next.svg);
+    }
+  }
+  
+  &.easter {
+    &:after {
+      mask-image: url(../../../assets/easter.svg);
+    }
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { StageStoreService } from '../../stage-store.service';
 
 @Component({
 	selector: 'app-stage-button',
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./stage-button.component.scss']
 })
 export class StageButtonComponent implements OnInit {
-	title = 'Button';
+	@Input() name = 'Button';
+	@Input() code: string
 
-	constructor() { }
+	constructor(private stage: StageStoreService) { }
 
 	ngOnInit(): void {
 	}
