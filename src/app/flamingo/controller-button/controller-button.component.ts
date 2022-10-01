@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { COLORS } from '../services/enums';
-import { FlamingoService, FlamingQuery } from '../services/flamingo-store.service';
+import { COLORS } from '../../services/enums';
+import { FlamingoService, FlamingQuery } from '../../services/flamingo-store.service';
 
 const COLOR_CODES: { [key: string]: string } = {
 	[COLORS.RED]: '#FF4949',

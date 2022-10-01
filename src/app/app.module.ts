@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ControllerComponent } from './controller/controller.component';
-import { ControllerButtonComponent } from './controller-button/controller-button.component';
+import { ControllerComponent } from './flamingo/controller/controller.component';
+import { ControllerButtonComponent } from './flamingo/controller-button/controller-button.component';
 import { FlamingoStore } from './services/flamingo-store.service';
 
 import { StageComponent } from './stage/stage.component';

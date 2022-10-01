@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { map, Observable, startWith } from 'rxjs';
-import { COLORS } from '../services/enums';
-import { ControllerColors, FlamingQuery } from '../services/flamingo-store.service';
+import { COLORS } from '../../services/enums';
+import { ControllerColors, FlamingQuery } from '../../services/flamingo-store.service';
 
 @Component({
 	selector: 'app-controller',
