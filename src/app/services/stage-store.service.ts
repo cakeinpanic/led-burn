@@ -14,6 +14,10 @@ const names = [
 	'Light2',
 	'Garland1',
 	'Garland2',
+	'Whatever',
+	'Whatever2',
+	'Whatever3',
+	'Whatever4',
 ];
 
 export interface ButtonState {
@@ -28,7 +32,7 @@ export interface StageStateState {
 
 export function createInitialState(): StageStateState {
 	return {
-		appliances: (new Array(8)).fill(0).map((t, i) => ({ code: i, name: names[i], on: false }))
+		appliances: (new Array(12)).fill(0).map((t, i) => ({ code: i, name: names[i] || 'Button', on: false }))
 	};
 }
 

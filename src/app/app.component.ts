@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FlamingoService } from './flamingo-store.service';
-import { JavaService } from './java.service';
-import { StageService } from './stage-store.service';
+import { FlamingoService } from './services/flamingo-store.service';
+import { JavaService } from './services/java.service';
+import { StageService } from './services/stage-store.service';
 
 @Component({
 	selector: 'app-root',

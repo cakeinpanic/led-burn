@@ -1,5 +1,5 @@
 import { Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
-import { StageService } from '../../stage-store.service';
+import { StageService } from '../../services/stage-store.service';
 
 @Component({
 	selector: 'app-stage-button',

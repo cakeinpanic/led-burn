@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ControllerComponent } from './controller/controller.component';
 import { ControllerButtonComponent } from './controller-button/controller-button.component';
-import { FlamingoStore } from './flamingo-store.service';
+import { FlamingoStore } from './services/flamingo-store.service';
 
 import { StageComponent } from './stage/stage.component';
 import { FlamingoComponent } from './flamingo/flamingo.component';

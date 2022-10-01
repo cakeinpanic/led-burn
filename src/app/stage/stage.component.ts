@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StageQuery, StageService } from '../stage-store.service';
+import { StageQuery, StageService } from '../services/stage-store.service';
 
 @Component({
 	selector: 'app-stage',
