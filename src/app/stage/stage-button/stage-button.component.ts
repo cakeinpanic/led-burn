@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { StageStoreService } from '../../stage-store.service';
+import { Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
+import { StageService } from '../../stage-store.service';
 
 @Component({
 	selector: 'app-stage-button',
@@ -8,11 +8,17 @@ import { StageStoreService } from '../../stage-store.service';
 })
 export class StageButtonComponent implements OnInit {
 	@Input() name = 'Button';
-	@Input() code: string
+	@Input() code: number;
+	@HostBinding('class.on') @Input() on: boolean;
 
-	constructor(private stage: StageStoreService) { }
+	constructor(private stageService: StageService) { }
 
 	ngOnInit(): void {
+	}
+
+	@HostListener('click')
+	onClick() {
+		this.stageService.switchAppliance(this.code, !this.on)
 	}
 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FlamingoService } from './flamingo-store.service';
 import { JavaService } from './java.service';
+import { StageService } from './stage-store.service';
 
 @Component({
 	selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
 	onStage = true;
 	noAndroid = false;
 
-	constructor(private java: JavaService, private flamingoService: FlamingoService) {
+	constructor(private java: JavaService, private flamingoService: FlamingoService, private stageService: StageService) {
 
 	}
 
@@ -21,9 +22,13 @@ export class AppComponent {
 		this.java.androidMessage.subscribe(t => {
 			const [signalType, signalBody] = t.split('=');
 			console.log(signalType);
-			switch (signalType) {
+			const signalSubType = signalType[0]
+			switch (signalSubType) {
 				case 'P':
 					this.flamingoService.setColorFromSignal(signalBody);
+					break;
+				case 'A':
+					this.stageService.setApplianceStatusFromSignal(+signalType[1], signalBody);
 					break;
 			}
 		});

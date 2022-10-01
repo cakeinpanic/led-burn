@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ControllerComponent } from './controller/controller.component';
 import { ControllerButtonComponent } from './controller-button/controller-button.component';
 import { FlamingoStore } from './flamingo-store.service';
-import { StageStoreService } from './stage-store.service';
+
 import { StageComponent } from './stage/stage.component';
 import { FlamingoComponent } from './flamingo/flamingo.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -28,7 +28,7 @@ import { StageButtonComponent } from './stage/stage-button/stage-button.componen
   imports: [
     BrowserModule
   ],
-  providers: [FlamingoStore, StageStoreService],
+  providers: [FlamingoStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

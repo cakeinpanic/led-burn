@@ -19,6 +19,7 @@ export class JavaService {
 
 	sendToAndroid(message: string) {
 		console.log('sent to android: ', message);
+		//this.androidMessage.next(message);
 		if (this.Android) {
 			this.Android.sendMeEvent(message);
 		}
@@ -27,6 +28,5 @@ export class JavaService {
 	getFromAndroid(s: string) {
 		this.androidMessage.next(s);
 		this.sendToAndroid('Got from android' + s);
-		//alert(`Got from Android: ${s}`);
 	}
 }

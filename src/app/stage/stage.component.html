@@ -2,8 +2,7 @@
 <div class="block">
   <div class="title">Lights</div>
   <div class="buttons">
-    <app-stage-button *ngFor="let b of buttons" [code]="'A'+b.code" [name]="b.name"></app-stage-button>
-    <app-stage-button code="A1"></app-stage-button>
+    <app-stage-button *ngFor="let b of buttons$ | async" [code]="b.code" [name]="b.name" [on]="b.on"></app-stage-button>
   </div>
 </div>
 <div class="block">
