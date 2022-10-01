@@ -12,9 +12,13 @@ export class JavaService {
 		(window as any)['getFromAndroid'] = this.getFromAndroid.bind(this);
 	}
 
-	checkAndroid():boolean {
+	checkAndroid(): boolean {
 		this.Android = (window as any)['Android'];
 		return !!this.Android;
+	}
+
+	requestStatus() {
+		this.sendToAndroid('status')
 	}
 
 	sendToAndroid(message: string) {

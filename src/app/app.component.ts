@@ -18,7 +18,7 @@ export class AppComponent {
 
 	ngOnInit() {
 		this.noAndroid = !this.java.checkAndroid();
-
+		this.java.requestStatus()
 		this.java.androidMessage.subscribe(t => {
 			const [signalType, signalBody] = t.split('=');
 			console.log(signalType);
