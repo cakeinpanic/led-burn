@@ -47,12 +47,10 @@ export class FlamingQuery extends Query<FlamingoState> {
 	}
 
 	all$ = this.select();
-	controller1$ = this.select('controller1');
-	controller2$ = this.select('controller2');
-	controller3$ = this.select('controller3');
+
 
 	controller$(controllerIndex: number | string): Observable<Controller> {
-		return (this as any)['controller' + controllerIndex + '$'] as Observable<Controller>;
+		return this.select('controller' + controllerIndex as any) as Observable<Controller>;
 	}
 
 	isColorOn$(controllerIndex: number | string, color: COLORS): Observable<boolean> {

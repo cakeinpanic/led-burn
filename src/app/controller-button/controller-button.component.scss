@@ -3,13 +3,14 @@
   height: 3.4rem;
   padding: .5rem;
   margin: .3rem;
- 
+  
   border-radius: .9rem;
   background: #424246;
   border: 1px solid #E096CB;
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
   
   &.on {
     background: #25242D;
