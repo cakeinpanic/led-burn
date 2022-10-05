@@ -21,6 +21,7 @@ export interface FlamingoState {
 	controller1: Controller;
 	controller2: Controller;
 	controller3: Controller;
+	controller4: Controller;
 }
 
 export function createInitialState(): FlamingoState {
@@ -35,6 +36,7 @@ export function createInitialState(): FlamingoState {
 		controller1: { isOn: true, colors: { ...colorsState } },
 		controller2: { isOn: true, colors: { ...colorsState } },
 		controller3: { isOn: true, colors: { ...colorsState } },
+		controller4: { isOn: true, colors: { ...colorsState } },
 	};
 }
 

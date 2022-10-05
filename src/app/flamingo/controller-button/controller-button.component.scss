@@ -5,7 +5,7 @@
   margin: .3rem;
   
   border-radius: .9rem;
-  background: #424246;
+  background: #25242D;
   border: 1px solid #E096CB;
   display: flex;
   flex-direction: row;
@@ -13,7 +13,7 @@
   cursor: pointer;
   
   &.on {
-    background: #25242D;
+    background: #424246;
     border: 1px solid #E096CB;
   }
 }
