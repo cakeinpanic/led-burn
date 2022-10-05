@@ -21,7 +21,6 @@ const appliancesNames = [
 	'Whatever4',
 ];
 
-
 export interface ButtonState {
 	name: string,
 	code: number,
@@ -38,10 +37,10 @@ export function createInitialState(): StageStateState {
 	return {
 		appliances: (new Array(8)).fill(0).map((t, i) => ({ code: i, name: appliancesNames[i], on: false, icon: 'flare' })),
 		effects: [
-			{ code: 3, name: 'Smoke', on: false, icon: 'smoke' },
-			{ code: 5, name: 'Flickers', on: false, icon: 'flickers' },
-			{ code: 7, name: 'Bubble machine', on: false, icon: 'bubble' },
-			{ code: 7, name: 'Flickers & fan', on: false, icon: 'fan' }
+			{ code: 9, name: 'Smoke', on: false, icon: 'smoke' },
+			{ code: 10, name: 'Flickers', on: false, icon: 'flickers' },
+			{ code: 11, name: 'Bubble machine', on: false, icon: 'bubble' },
+			{ code: 12 , name: 'Flickers & fan', on: false, icon: 'fan' }
 		]
 	};
 }
@@ -77,15 +76,29 @@ export class StageService {
 
 	}
 
-	switchAppliance(controllerIndex: number, status: boolean) {
-		this.javaService.sendToAndroid(`A${controllerIndex}=${status ? 1 : 0}`);
+	setNewApplianceCode({ name, newCode }: { name: string, newCode: number, oldCode?: number }) {
+		this.store.update(state => {
+			const newAppliances = _cloneDeep(state.appliances);
+			const targetAppliance = newAppliances.find(({ name: aNAme }) => name == aNAme);
+			// reset same codes for everything else
+			newAppliances.filter(({ code }) => code == newCode).forEach(a => a.code = -1);
+
+			if (targetAppliance) {
+				targetAppliance.code = newCode;
+			}
+			return { ...state, appliances: newAppliances };
+		});
 	}
 
-	setApplianceStatusFromSignal(applianceIndex: number, status: string) {
-		this.store.update(state => {
+	switchAppliance(controllerCode: number, status: boolean) {
+		this.javaService.sendToAndroid(`A${controllerCode}=${status ? 1 : 0}`);
+	}
 
+	setApplianceStatusFromSignal(applianceCode: number, status: string) {
+		this.store.update(state => {
 			const newAppliances = _cloneDeep(state.appliances);
-			newAppliances[applianceIndex].on = status === '1';
+			const targetAppliance = newAppliances.find(({ code }) => code == applianceCode);
+			if (targetAppliance) {targetAppliance.on = status === '1';}
 			return { ...state, appliances: newAppliances };
 		});
 

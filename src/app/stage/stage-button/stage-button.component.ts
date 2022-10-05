@@ -1,5 +1,7 @@
 import { Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { StageService } from '../../services/stage-store.service';
+import { CodeDoalogComponent } from '../code-doalog/code-doalog.component';
 
 @Component({
 	selector: 'app-stage-button',
@@ -12,18 +14,30 @@ export class StageButtonComponent implements OnInit {
 	@Input() icon: string;
 	@HostBinding('class.on') @Input() on: boolean;
 
-	constructor(private stageService: StageService) { }
+	constructor(private stageService: StageService, private matDialog: MatDialog) { }
 
 	ngOnInit(): void {
 	}
 
-
-	get iconSrc():string{
-		return 'assets/'+this.icon+'.svg'
+	get iconSrc(): string {
+		return 'assets/' + this.icon + '.svg';
 	}
-	@HostListener('click')
+
+	editCode() {
+		let dialogRef = this.matDialog.open(CodeDoalogComponent, {
+			data: { code: this.code, name: this.name }
+		});
+		dialogRef.afterClosed().subscribe(newCode => {
+			this.stageService.setNewApplianceCode({
+				name: this.name,
+				oldCode: this.code,
+				newCode
+			});
+		});
+	}
+
 	onClick() {
-		this.stageService.switchAppliance(this.code, !this.on)
+		this.stageService.switchAppliance(this.code, !this.on);
 	}
 
 }

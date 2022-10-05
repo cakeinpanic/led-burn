@@ -23,7 +23,7 @@ export class JavaService {
 
 	sendToAndroid(message: string) {
 		console.log('sent to android: ', message);
-		//this.androidMessage.next(message);
+		this.androidMessage.next(message);
 		if (this.Android) {
 			this.Android.sendMeEvent(message);
 		}

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Change code for "{{data.name}}"</h1>
+<div mat-dialog-content>
+  <p>Set code</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Code</mat-label>
+    <input matInput type="number" [formControl]="code">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button  cdkFocusInitial (click)="close()">Ok</button>
+</div>

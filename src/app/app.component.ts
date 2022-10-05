@@ -18,17 +18,18 @@ export class AppComponent {
 
 	ngOnInit() {
 		this.noAndroid = !this.java.checkAndroid();
-		this.java.requestStatus()
+		this.java.requestStatus();
 		this.java.androidMessage.subscribe(t => {
 			const [signalType, signalBody] = t.split('=');
-			console.log(signalType);
-			const signalSubType = signalType[0]
+
+			const signalSubType = signalType[0];
+			console.log(signalType, signalBody, signalSubType);
 			switch (signalSubType) {
 				case 'P':
 					this.flamingoService.setColorFromSignal(signalBody);
 					break;
 				case 'A':
-					this.stageService.setApplianceStatusFromSignal(+signalType[1], signalBody);
+					this.stageService.setApplianceStatusFromSignal(+signalType.substring(1), signalBody);
 					break;
 			}
 		});
