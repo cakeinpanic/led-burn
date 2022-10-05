@@ -12,9 +12,15 @@
   align-items: center;
   cursor: pointer;
   
+  
+  
   &.on {
     background: #424246;
     border: 1px solid #E096CB;
+    
+    .color-circle {
+      filter: none;
+    }
   }
 }
 
@@ -24,4 +30,20 @@
   height: 2rem;
   margin-right: .7rem;
   border-radius: 3rem;
+  filter: brightness(.5);
+  align-items: center;
+  justify-items: center;
+  &:after{
+    content: '';
+    width: 90%;
+    height: 90%;
+    top: 18%;
+    left: 5%;
+    position: relative;
+    display: block;
+    mask-repeat: no-repeat;
+    mask-image: url(../../../assets/btn.svg);
+    mask-size: contain;
+    background-color: black;
+  }
 }

@@ -22,12 +22,12 @@ export class ControllerButtonComponent implements OnInit {
 	@Input() controllerIndex: string;
 	@HostBinding('class.on') isColorOn: boolean = false;
 
+	@Input() isControllerOn: boolean | null = true;
 	destroy$ = new Subject<void>();
 
 	constructor(
 		private flamingoService: FlamingoService,
-		private flamingQuery: FlamingQuery,
-		private cd: ChangeDetectorRef) { }
+		private flamingQuery: FlamingQuery) { }
 
 	get colorCode(): string {
 		return COLOR_CODES[this.color];
@@ -35,15 +35,14 @@ export class ControllerButtonComponent implements OnInit {
 
 	@HostListener('click')
 	onClick() {
-		this.flamingoService.setColor(this.controllerIndex, this.color);
+		if (this.isControllerOn) {
+			this.flamingoService.setColor(this.controllerIndex, this.color);
+		}
 	}
 
 	ngOnInit(): void {
-		this.flamingQuery.isColorOn$(this.controllerIndex, this.color).pipe(tap(v => {
-				this.isColorOn = v;
-
-			}),
-			takeUntil(this.destroy$)).subscribe();
+		this.flamingQuery.isColorOn$(this.controllerIndex, this.color)
+			.pipe(takeUntil(this.destroy$)).subscribe(v => {this.isColorOn = !!this.isControllerOn && v;});
 
 	}
 

@@ -1,2 +1,2 @@
 <div class="color-circle" [style]="{background :colorCode}"></div>
-<app-status [isOn]="isColorOn"></app-status>
+<app-status *ngIf="isControllerOn" [isOn]="isColorOn"></app-status>

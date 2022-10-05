@@ -33,7 +33,7 @@ export function createInitialState(): FlamingoState {
 		white: false,
 	};
 	return {
-		controller1: { isOn: true, colors: { ...colorsState } },
+		controller1: { isOn: false, colors: { ...colorsState } },
 		controller2: { isOn: true, colors: { ...colorsState } },
 		controller3: { isOn: true, colors: { ...colorsState } },
 		controller4: { isOn: true, colors: { ...colorsState } },

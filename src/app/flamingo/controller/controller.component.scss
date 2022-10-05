@@ -1,9 +1,13 @@
 :host {
   background: #1F1E25;
+  
   border-radius: .6rem;
   padding: 2rem;
   width: 100%;
   display: block;
+  &.on {
+  
+  }
 }
 
 .name {
