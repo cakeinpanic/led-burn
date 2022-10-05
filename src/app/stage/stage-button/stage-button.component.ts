@@ -9,6 +9,7 @@ import { StageService } from '../../services/stage-store.service';
 export class StageButtonComponent implements OnInit {
 	@Input() name = 'Button';
 	@Input() code: number;
+	@Input() icon: string;
 	@HostBinding('class.on') @Input() on: boolean;
 
 	constructor(private stageService: StageService) { }
@@ -16,6 +17,10 @@ export class StageButtonComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
+
+	get iconSrc():string{
+		return 'assets/'+this.icon+'.svg'
+	}
 	@HostListener('click')
 	onClick() {
 		this.stageService.switchAppliance(this.code, !this.on)

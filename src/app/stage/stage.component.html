@@ -2,6 +2,13 @@
 <div class="block">
   <div class="title">Lights</div>
   <div class="buttons">
-    <app-stage-button class="btn" *ngFor="let b of buttons$ | async" [code]="b.code" [name]="b.name" [on]="b.on"></app-stage-button>
+    <app-stage-button class="btn" *ngFor="let b of buttons$ | async" [icon]="b.icon"[code]="b.code" [name]="b.name" [on]="b.on"></app-stage-button>
   </div>
 </div>
+<div class="block">
+  <div class="title">Effects</div>
+  <div class="buttons">
+    <app-stage-button class="btn" *ngFor="let b of effects$ | async" [icon]="b.icon"[code]="b.code" [name]="b.name" [on]="b.on"></app-stage-button>
+  </div>
+</div>
+

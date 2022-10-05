@@ -8,6 +8,7 @@ import { StageQuery, StageService } from '../services/stage-store.service';
 })
 export class StageComponent implements OnInit {
 	buttons$ = this.stageQuery.appliances$
+	effects$ = this.stageQuery.effects$
 
 	constructor(private stageService: StageService, private stageQuery: StageQuery) { }
 
