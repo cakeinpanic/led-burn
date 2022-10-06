@@ -64,13 +64,14 @@
   &.play {
     width: 8rem;
     height: 8rem;
+    margin: 1.7rem;
     
     &:before {
       display: block;
       content: '';
       width: 8rem;
       height: 8rem;
-      border: 34px solid #484553;
+      border: 1.1rem solid #484553;
       position: absolute;
       border-radius: 8rem;
     }
