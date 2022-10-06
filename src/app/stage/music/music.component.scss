@@ -9,6 +9,7 @@
   /* Inside auto layout */
   display: block;
   padding: 2rem;
+  flex-shrink: 0;
 }
 
 .title {
@@ -19,7 +20,7 @@
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  
+  cursor: pointer;
   color: #E096CB;
 }
 
@@ -103,5 +104,17 @@
     &:after {
       mask-image: url(../../../assets/easter.svg);
     }
+  }
+}
+
+.full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  .easter {
+    width: 6rem;
+    height: 6rem;
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Query, Store, StoreConfig } from '@datorama/akita';
-import { map, Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { JavaService } from './java.service';
 import { cloneDeep as _cloneDeep } from 'lodash';
 
@@ -25,23 +25,23 @@ export interface ButtonState {
 	name: string,
 	code: number,
 	on: boolean,
-	icon: string
+	icon: string,
+	isEffect?: boolean
 }
 
 export interface StageStateState {
 	appliances: ButtonState[];
-	effects: ButtonState[];
 }
 
 export function createInitialState(): StageStateState {
 	return {
-		appliances: (new Array(8)).fill(0).map((t, i) => ({ code: i, name: appliancesNames[i], on: false, icon: 'flare' })),
-		effects: [
-			{ code: 9, name: 'Smoke', on: false, icon: 'smoke' },
-			{ code: 10, name: 'Flickers', on: false, icon: 'flickers' },
-			{ code: 11, name: 'Bubble machine', on: false, icon: 'bubble' },
-			{ code: 12 , name: 'Flickers & fan', on: false, icon: 'fan' }
-		]
+		appliances: [
+			...((new Array(8)).fill(0).map((t, i) => ({ code: i, name: appliancesNames[i], on: false, icon: 'flare' }))),
+			{ code: 9, name: 'Smoke', on: false, icon: 'smoke', isEffect: true },
+			{ code: 10, name: 'Flickers', on: false, icon: 'flickers', isEffect: true },
+			{ code: 11, name: 'Bubble machine', on: false, icon: 'bubble', isEffect: true },
+			{ code: 12, name: 'Flickers & fan', on: false, icon: 'fan', isEffect: true }],
+
 	};
 }
 
@@ -62,8 +62,8 @@ export class StageQuery extends Query<StageStateState> {
 	}
 
 	all$ = this.select();
-	appliances$ = this.select('appliances');
-	effects$ = this.select('effects');
+	appliances$ = this.select('appliances').pipe(map(a => a.filter(({ isEffect }) => !isEffect)));
+	effects$ = this.select('appliances').pipe(map(a => a.filter(({ isEffect }) => isEffect)));
 
 	appliance(index: number): Observable<ButtonState> {
 		return this.appliances$.pipe(map(arr => arr[index]));

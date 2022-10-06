@@ -1,7 +1,10 @@
-<div class="title">Back to stage</div>
+<div class="title"  *ngIf="fullMode" (click)="backToStage.emit()">Back to stage</div>
 <div class="buttons">
   <div class="button stop" (click)="stop()"></div>
   <div class="button play" (click)="play()"><div class="bg"></div></div>
   <div class="button next" (click)="next()"></div>
-  <div class="button easter" (click)="easter()"></div>
+  <div *ngIf="fullMode" class="button easter" (click)="easter()"></div>
+</div>
+<div class="full"  *ngIf="!fullMode">
+<div class="button easter" (click)="easter()"></div>
 </div>

@@ -1,14 +1,19 @@
-<app-music></app-music>
-<div class="block">
-  <div class="title">Lights</div>
-  <div class="buttons">
-    <app-stage-button class="btn" *ngFor="let b of buttons$ | async" [icon]="b.icon"[code]="b.code" [name]="b.name" [on]="b.on"></app-stage-button>
-  </div>
+<app-music [fullMode]="fullMode" (backToStage)="toFullMode()"></app-music>
+<div *ngIf="!fullMode" (click)="toFullMode()" class="manual-btn">
+  <div class="text">Manual control</div>
 </div>
-<div class="block">
-  <div class="title">Effects</div>
-  <div class="buttons">
-    <app-stage-button class="btn" *ngFor="let b of effects$ | async" [icon]="b.icon"[code]="b.code" [name]="b.name" [on]="b.on"></app-stage-button>
+<div *ngIf="fullMode">
+  <div class="block">
+    <div class="title">Lights</div>
+    <div class="buttons">
+      <app-stage-button class="btn" *ngFor="let b of buttons$ | async" [icon]="b.icon" [code]="b.code" [name]="b.name" [on]="b.on"></app-stage-button>
+    </div>
   </div>
-</div>
+  <div class="block">
+    <div class="title">Effects</div>
+    <div class="buttons">
+      <app-stage-button class="btn" *ngFor="let b of effects$ | async" [icon]="b.icon" [code]="b.code" [name]="b.name" [on]="b.on"></app-stage-button>
+    </div>
+  </div>
 
+</div>

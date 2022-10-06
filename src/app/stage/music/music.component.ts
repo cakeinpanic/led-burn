@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { JavaService } from '../../services/java.service';
 
 @Component({
@@ -7,9 +7,9 @@ import { JavaService } from '../../services/java.service';
 	styleUrls: ['./music.component.scss']
 })
 export class MusicComponent implements OnInit {
-
+@Input() fullMode: boolean
 	constructor(private javaService: JavaService) { }
-
+@Output() backToStage = new EventEmitter()
 	ngOnInit(): void {
 
 	}
