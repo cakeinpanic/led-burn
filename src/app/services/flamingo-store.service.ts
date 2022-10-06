@@ -22,6 +22,7 @@ export interface FlamingoState {
 	controller2: Controller;
 	controller3: Controller;
 	controller4: Controller;
+	flamingo: boolean;
 }
 
 export function createInitialState(): FlamingoState {
@@ -37,6 +38,7 @@ export function createInitialState(): FlamingoState {
 		controller2: { isOn: true, colors: { ...colorsState } },
 		controller3: { isOn: true, colors: { ...colorsState } },
 		controller4: { isOn: true, colors: { ...colorsState } },
+		flamingo: false
 	};
 }
 
@@ -49,6 +51,8 @@ export class FlamingQuery extends Query<FlamingoState> {
 	}
 
 	all$ = this.select();
+
+	flamingo$ = this.select('flamingo');
 
 	controller$(controllerIndex: number | string): Observable<Controller> {
 		return this.select('controller' + controllerIndex as any) as Observable<Controller>;
@@ -72,6 +76,16 @@ export class FlamingoStore extends Store<FlamingoState> {
 export class FlamingoService {
 	constructor(private store: FlamingoStore, private javaService: JavaService) {
 
+	}
+
+	toggleFlamingo() {
+		this.store.update(state => {
+			const newState = {
+				...state,
+				flamingo: !state.flamingo
+			};
+			return newState;
+		});
 	}
 
 	toggleController(controllerIndex: number | string,) {
