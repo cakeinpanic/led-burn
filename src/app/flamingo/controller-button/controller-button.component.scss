@@ -33,17 +33,14 @@
   filter: brightness(.5);
   align-items: center;
   justify-items: center;
-  &:after{
-    content: '';
-    width: 90%;
-    height: 90%;
-    top: 18%;
-    left: 5%;
-    position: relative;
-    display: block;
-    mask-repeat: no-repeat;
-    mask-image: url(../../../assets/btn.svg);
-    mask-size: contain;
-    background-color: black;
+  svg {
+      width: 90%;
+      height: 90%;
+      top: 4%;
+      left: 5%;
+      position: relative;
+      display: block;
+      fill: black;
+    
   }
 }

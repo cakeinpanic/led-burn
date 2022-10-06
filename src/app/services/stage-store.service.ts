@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Query, Store, StoreConfig } from '@datorama/akita';
-import { filter, map, Observable } from 'rxjs';
-import { JavaService } from './java.service';
 import { cloneDeep as _cloneDeep } from 'lodash';
+import { map, Observable } from 'rxjs';
+import { JavaService } from './java.service';
 
 const appliancesNames = [
 	'Rainbow',

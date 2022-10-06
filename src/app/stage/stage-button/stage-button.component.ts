@@ -20,7 +20,7 @@ export class StageButtonComponent implements OnInit {
 	}
 
 	get iconSrc(): string {
-		return 'assets/' + this.icon + '.svg';
+		return '#' + this.icon;
 	}
 
 	editCode() {

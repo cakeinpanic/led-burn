@@ -1,8 +1,12 @@
 <div class="circle" (click)="onClick()">
-  <svg-icon class="icon" [src]="iconSrc"></svg-icon>
+  <svg class="icon">
+
+    <use [attr.xlink:href]="iconSrc"></use>
+
+  </svg>
 </div>
 <div class="title">
   <div>{{name}}</div>
-  <div class="code" [class.error]="code===-1"(click)="editCode()">code {{code > -1 ? code: 'Not set'}} <div class="edit"></div></div>
+  <div class="code" [class.error]="code===-1"(click)="editCode()">code {{code > -1 ? code: 'Not set'}} <div class="edit"><svg><use xlink:href="#edit"></use></svg></div></div>
 </div>
 

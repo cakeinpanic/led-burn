@@ -9,8 +9,8 @@
       background: #E096CB;
       box-shadow: 0px 0px 29px rgba(255, 255, 255, 0.48);
       
-      &:after {
-        background-color: black;
+      svg {
+        fill: black;
       }
     }
   }
@@ -64,12 +64,11 @@
 }
 
 .edit {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  background: white;
-  mask-image: url(../../../assets/edit.svg);
-  mask-size: contain;
-  mask-repeat: no-repeat;
+  svg {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: white;
+  }
 }
 

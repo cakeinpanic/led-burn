@@ -1,5 +1,7 @@
 <div class="flamingo">
-  <svg-icon [matMenuTriggerFor]="menu" class="icon" src="assets/flamingo.svg" [class.on]="flamingo$ | async"></svg-icon>
+  <svg [matMenuTriggerFor]="menu" class="icon" [class.on]="flamingo$ | async">
+    <use xlink:href="#flamingo"></use>
+  </svg>
   <mat-menu #menu="matMenu" xPosition="after">
     <button mat-menu-item (click)="toggleFlamingo()">
       <span *ngIf="flamingo$ | async">Turn Off</span>
@@ -12,3 +14,4 @@
 <app-controller class="controller" name="Controller 2" controllerIndex="2"></app-controller>
 <app-controller class="controller" name="Controller 3" controllerIndex="3"></app-controller>
 <app-controller class="controller" name="Controller 4" controllerIndex="4"></app-controller>
+

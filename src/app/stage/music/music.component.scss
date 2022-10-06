@@ -46,22 +46,18 @@
   justify-content: center;
   
   
-  &:after {
-    display: block;
-    content: '';
+  svg {
     width: 40%;
     height: 40%;
-    
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    background-color: white;
+
+    fill: white;
   }
   
   &:hover, &:active {
     background: #E096CB;
     
-    &:after {
-      background-color: black;
+    svg {
+      fill: black;
     }
   }
   
@@ -79,32 +75,14 @@
       border-radius: 8rem;
     }
     
-    &:after {
+    svg {
       position: relative;
       left: 5%;
-      mask-image: url(../../../assets/play.svg);
       width: 40%;
       height: 40%;
     }
   }
   
-  &.stop {
-    &:after {
-      mask-image: url(../../../assets/stop.svg);
-    }
-  }
-  
-  &.next {
-    &:after {
-      mask-image: url(../../../assets/next.svg);
-    }
-  }
-  
-  &.easter {
-    &:after {
-      mask-image: url(../../../assets/easter.svg);
-    }
-  }
 }
 
 .full {

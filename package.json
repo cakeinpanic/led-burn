@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --base-href=https://cakeinpanic.github.io/led-burn/",
+    "build:field": "ng build --base-href=./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

@@ -9,7 +9,7 @@ import { StageService } from './services/stage-store.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	onStage = true;
+	onStage = false;
 	noAndroid = false;
 
 	constructor(private java: JavaService, private flamingoService: FlamingoService, private stageService: StageService) {}

@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularSvgIconModule } from 'angular-svg-icon';
+
 
 import { AppComponent } from './app.component';
 import { ControllerButtonComponent } from './flamingo/controller-button/controller-button.component';
@@ -44,8 +44,7 @@ import { TabsComponent } from './tabs/tabs.component';
 		MatIconModule,
 		ReactiveFormsModule,
 		MatButtonModule,
-		HttpClientModule,
-		AngularSvgIconModule.forRoot()
+		HttpClientModule
 	],
 	providers: [FlamingoStore],
 	bootstrap: [AppComponent]

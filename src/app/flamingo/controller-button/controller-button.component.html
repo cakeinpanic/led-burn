@@ -1,2 +1,6 @@
-<div class="color-circle" [style]="{background :colorCode}"></div>
+<div class="color-circle" [style]="{background :colorCode}">
+  <svg>
+    <use xlink:href="#btn"></use>
+  </svg>
+</div>
 <app-status *ngIf="isControllerOn" [isOn]="isColorOn"></app-status>
