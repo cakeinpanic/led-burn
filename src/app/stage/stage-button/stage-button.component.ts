@@ -30,7 +30,6 @@ export class StageButtonComponent implements OnInit {
 		dialogRef.afterClosed().subscribe(newCode => {
 			this.stageService.setNewApplianceCode({
 				name: this.name,
-				oldCode: this.code,
 				newCode
 			});
 		});

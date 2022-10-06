@@ -12,28 +12,37 @@ export class AppComponent {
 	onStage = true;
 	noAndroid = false;
 
-	constructor(private java: JavaService, private flamingoService: FlamingoService, private stageService: StageService) {
-
-	}
+	constructor(private java: JavaService, private flamingoService: FlamingoService, private stageService: StageService) {}
 
 	ngOnInit() {
 		this.noAndroid = !this.java.checkAndroid();
 		this.java.requestStatus();
+
 		this.java.androidMessage.subscribe(t => {
-			const [signalType, signalBody] = t.split('=');
-
-			const signalSubType = signalType[0];
-			console.log(signalType, signalBody, signalSubType);
-			switch (signalSubType) {
-				case 'P':
-					this.flamingoService.setColorFromSignal(signalBody);
-					break;
-				case 'A':
-					this.stageService.setApplianceStatusFromSignal(+signalType.substring(1), signalBody);
-					break;
-			}
+			t.split(',').forEach(this.handleAndroidMessage.bind(this));
 		});
+	}
 
+	handleAndroidMessage(t: string) {
+		const [signalType, signalBody] = t.split('=');
+
+		const signalSubType = signalType[0];
+		console.log(signalType, signalBody, signalSubType);
+		switch (signalSubType) {
+			case 'P':
+				this.flamingoService.setColorFromSignal(signalBody);
+				break;
+			case 'A':
+				this.stageService.setApplianceStatusFromSignal(+signalType.substring(1), signalBody);
+				break;
+			case 'F':
+				this.flamingoService.setFlamingoFromSignal(signalBody);
+				break;
+			case 'Q':
+				const arr: {name: string, code: string}[] = JSON.parse(signalBody);
+				arr.forEach(({ name, code }) => this.stageService.setNewApplianceCode({ name, newCode: +code }));
+				break;
+		}
 	}
 
 	goToStage(isStage: boolean) {

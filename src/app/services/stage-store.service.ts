@@ -76,7 +76,7 @@ export class StageService {
 
 	}
 
-	setNewApplianceCode({ name, newCode }: { name: string, newCode: number, oldCode?: number }) {
+	setNewApplianceCode({ name, newCode }: { name: string, newCode: number }) {
 		this.store.update(state => {
 			const newAppliances = _cloneDeep(state.appliances);
 			const targetAppliance = newAppliances.find(({ name: aNAme }) => name == aNAme);
@@ -86,6 +86,7 @@ export class StageService {
 			if (targetAppliance) {
 				targetAppliance.code = newCode;
 			}
+			this.javaService.saveCodes(newAppliances.map(({ name, code }) => ({ name, code })));
 			return { ...state, appliances: newAppliances };
 		});
 	}
@@ -103,5 +104,6 @@ export class StageService {
 		});
 
 	}
+
 }
 

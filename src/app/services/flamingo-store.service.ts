@@ -79,13 +79,7 @@ export class FlamingoService {
 	}
 
 	toggleFlamingo() {
-		this.store.update(state => {
-			const newState = {
-				...state,
-				flamingo: !state.flamingo
-			};
-			return newState;
-		});
+		this.javaService.sendToAndroid(`F=${this.store.getValue().flamingo? '0': '1'}`);
 	}
 
 	toggleController(controllerIndex: number | string,) {
@@ -109,6 +103,12 @@ export class FlamingoService {
 				[keyName]: { colors, isOn: !controllerState.isOn }
 			};
 			return newState;
+		});
+	}
+
+	setFlamingoFromSignal(status: string) {
+		this.store.update(state => {
+			return { ...state, flamingo: status === '1' };
 		});
 	}
 

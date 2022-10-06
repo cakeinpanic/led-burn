@@ -17,8 +17,12 @@ export class JavaService {
 		return !!this.Android;
 	}
 
+	saveCodes(object: any) {
+		this.sendToAndroid(`Q=${JSON.stringify(object)}`);
+	}
+
 	requestStatus() {
-		this.sendToAndroid('status')
+		this.sendToAndroid('status');
 	}
 
 	sendToAndroid(message: string) {

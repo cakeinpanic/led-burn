@@ -20,9 +20,7 @@ export class ControllerComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.isOn$ = this.flamingQuery.controller$(this.controllerIndex)
-			.pipe(map(c => c.isOn), tap(t=>{
-				console.log('isOn', t, 'c', this.controllerIndex);
-			}));
+			.pipe(map(c => c.isOn));
 	}
 
 	toggleController() {
