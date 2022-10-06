@@ -1,9 +1,18 @@
 <div class="name">{{name}}</div>
+<button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="toggleController()">
+    <span *ngIf="isOn$ | async">Turn Off</span>
+    <span *ngIf="!(isOn$ | async)">Turn on</span>
+  </button>
+</mat-menu>
 <app-status [isOn]="isOn$ | async"></app-status>
 <div class="buttons">
-  <app-controller-button [color]="COLORS.GREEN" [controllerIndex]="controllerIndex" [isControllerOn]="isOn$ | async"></app-controller-button>
-  <app-controller-button [color]="COLORS.YELLOW" [controllerIndex]="controllerIndex" [isControllerOn]="isOn$ | async"></app-controller-button>
-  <app-controller-button [color]="COLORS.BLUE" [controllerIndex]="controllerIndex" [isControllerOn]="isOn$ | async"></app-controller-button>
-  <app-controller-button [color]="COLORS.RED" [controllerIndex]="controllerIndex" [isControllerOn]="isOn$ | async"></app-controller-button>
-  <app-controller-button [color]="COLORS.WHITE" [controllerIndex]="controllerIndex" [isControllerOn]="isOn$ | async"></app-controller-button>
+  <app-controller-button [color]="COLORS.GREEN" [controllerIndex]="controllerIndex"></app-controller-button>
+  <app-controller-button [color]="COLORS.YELLOW" [controllerIndex]="controllerIndex"></app-controller-button>
+  <app-controller-button [color]="COLORS.BLUE" [controllerIndex]="controllerIndex"></app-controller-button>
+  <app-controller-button [color]="COLORS.RED" [controllerIndex]="controllerIndex"></app-controller-button>
+  <app-controller-button [color]="COLORS.WHITE" [controllerIndex]="controllerIndex"></app-controller-button>
 </div>

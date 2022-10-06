@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
-import { Observable, Subject, takeUntil, tap } from 'rxjs';
+import { map, Observable, Subject, takeUntil, tap } from 'rxjs';
 import { COLORS } from '../../services/enums';
 import { FlamingoService, FlamingQuery } from '../../services/flamingo-store.service';
 
@@ -22,11 +22,12 @@ export class ControllerButtonComponent implements OnInit {
 	@Input() controllerIndex: string;
 	@HostBinding('class.on') isColorOn: boolean = false;
 
-	@Input() isControllerOn: boolean | null = true;
+	isControllerOn: boolean | null;
 	destroy$ = new Subject<void>();
 
 	constructor(
 		private flamingoService: FlamingoService,
+		private cd: ChangeDetectorRef,
 		private flamingQuery: FlamingQuery) { }
 
 	get colorCode(): string {
@@ -41,8 +42,14 @@ export class ControllerButtonComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.flamingQuery.isColorOn$(this.controllerIndex, this.color)
-			.pipe(takeUntil(this.destroy$)).subscribe(v => {this.isColorOn = !!this.isControllerOn && v;});
+		this.flamingQuery
+			.controller$(this.controllerIndex)
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(({ colors, isOn }) => {
+				this.isControllerOn= isOn
+				this.isColorOn = !!colors[this.color] && isOn;
+				this.cd.detectChanges()
+			});
 
 	}
 

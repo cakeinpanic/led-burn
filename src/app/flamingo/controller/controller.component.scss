@@ -1,6 +1,6 @@
 :host {
   background: #1F1E25;
-  
+  position: relative;
   border-radius: .6rem;
   padding: 2rem;
   width: 100%;
@@ -10,6 +10,12 @@
   }
 }
 
+.menu-button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  opacity: .5;
+}
 .name {
   font-style: normal;
   font-weight: 700;

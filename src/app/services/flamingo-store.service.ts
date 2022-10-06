@@ -50,7 +50,6 @@ export class FlamingQuery extends Query<FlamingoState> {
 
 	all$ = this.select();
 
-
 	controller$(controllerIndex: number | string): Observable<Controller> {
 		return this.select('controller' + controllerIndex as any) as Observable<Controller>;
 	}
@@ -73,6 +72,30 @@ export class FlamingoStore extends Store<FlamingoState> {
 export class FlamingoService {
 	constructor(private store: FlamingoStore, private javaService: JavaService) {
 
+	}
+
+	toggleController(controllerIndex: number | string,) {
+		const keyName = 'controller' + controllerIndex;
+		const colors = {} as ControllerColors;
+		ORDERED_COLORS.forEach((color) => {
+			colors[color] = false;
+		});
+
+		// reset all colors
+		//this.javaService.sendToAndroid(
+		//	`P=${[
+		//		controllerIndex,
+		//		...ORDERED_COLORS.map(c => 0)
+		//	].join('')}`);
+
+		this.store.update(state => {
+			const controllerState = (this.store.getValue() as any)[keyName] as Controller;
+			const newState = {
+				...state,
+				[keyName]: { colors, isOn: !controllerState.isOn }
+			};
+			return newState;
+		});
 	}
 
 	setColor(controllerIndex: number | string, color: COLORS) {
